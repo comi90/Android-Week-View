@@ -1790,10 +1790,8 @@ class WeekView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         val availableHeight = (rect.bottom - originalTop - (eventPadding * 2).toFloat()).toInt()
         val availableWidth = (rect.right - originalLeft - (eventPadding * 2).toFloat()).toInt()
 
-        // Get text color if necessary
-        if (textColorPicker != null) {
-            mEventTextPaint.color = textColorPicker!!.getTextColor(event)
-        }
+        mEventTextPaint.color = eventTextColor
+
         // Get text dimensions.
         var textLayout = StaticLayout(bob, mEventTextPaint, availableWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0f, false)
         if (textLayout.lineCount > 0) {
