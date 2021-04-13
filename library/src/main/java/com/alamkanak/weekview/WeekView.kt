@@ -978,7 +978,7 @@ class WeekView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         get() = weekDaySubtitleInterpreter != null
         private set(value) {}
 
-    private val timeChangedBroadcastReceiver: TimeChangedBroadcastReceiver
+//    private val timeChangedBroadcastReceiver: TimeChangedBroadcastReceiver
     private var today: Calendar = WeekViewUtil.today()
     private val containsAllDayEventCache = HashMap<Pair<SimpleDate, Int>, Boolean>()
     private val weekDayTitleFormatterCache = HashMap<SimpleDate, String>()
@@ -992,13 +992,13 @@ class WeekView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
     }
 
     init {
-        timeChangedBroadcastReceiver = object : TimeChangedBroadcastReceiver() {
-            override fun onTimeChanged() {
-                this@WeekView.today = WeekViewUtil.today()
-                invalidate()
-            }
-        }
-        timeChangedBroadcastReceiver.register(context, Calendar.getInstance())
+//        timeChangedBroadcastReceiver = object : TimeChangedBroadcastReceiver() {
+//            override fun onTimeChanged() {
+//                this@WeekView.today = WeekViewUtil.today()
+//                invalidate()
+//            }
+//        }
+//        timeChangedBroadcastReceiver.register(context, Calendar.getInstance())
         textColorPicker = object : TextColorPicker {
             override fun getTextColor(event: WeekViewEvent): Int {
                 val color = event.color
@@ -1186,10 +1186,10 @@ class WeekView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         newEventColor = 0xff3c93d9.toInt()
     }
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        context.unregisterReceiver(timeChangedBroadcastReceiver)
-    }
+//    override fun onDetachedFromWindow() {
+//        super.onDetachedFromWindow()
+//        context.unregisterReceiver(timeChangedBroadcastReceiver)
+//    }
 
     private fun resetHomeDate() {
         var newHomeDate = today()
